@@ -1,5 +1,3 @@
-// Класс приложения
-
 import client.Client;
 import server.Server;
 

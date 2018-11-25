@@ -24,7 +24,6 @@ public class AuthFile {
             } else {
                 numberOfUsers = countUsers();
             }
-                                                                                         System.out.println(numberOfUsers);
         } catch (IOException e) {
             e.printStackTrace();
         }

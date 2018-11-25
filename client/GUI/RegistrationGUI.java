@@ -30,7 +30,6 @@ public class RegistrationGUI extends JDialog {
             }
         });
 
-        // Создание вспомогательной панели с GridLayout для одинакового размера элементов
         JPanel gridPanel = new JPanel(new GridLayout(3,2,10,12));
         gridPanel.add(login);
         gridPanel.add(inputLogin);
@@ -43,8 +42,6 @@ public class RegistrationGUI extends JDialog {
         gridPanel.add(cancel);
         cancel.addActionListener(new CancelButtonEventListener());
 
-        // Создание вспомогательной панели с FlowLayout и добавдение в неё вспомогательной панели для того чтобы не расстягивались
-        // элементы панели при изменении размеров основного окна
         JPanel flowPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         flowPanel.add(gridPanel);
 

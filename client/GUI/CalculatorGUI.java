@@ -85,42 +85,7 @@ public class CalculatorGUI extends JFrame {
 
         setResizable(false);
         setLocationRelativeTo(null);
-    }
-
-    private void createPanelUI(Container container) {
-
-        container.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-
-        container.setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
-
-        // По умолчанию натуральная высота, максимальная ширина
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.ipady = 45;   // кнопка высокая
-        constraints.weightx = 0.5;
-        constraints.gridy = 0  ;  // нулевая ячейка таблицы по вертикали
-        constraints.gridx = 0;
-        constraints.gridwidth = 4;
-        container.add(screen,constraints);
-
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.ipady = 0;    // установить первоначальный размер кнопки
-        constraints.gridy = 1  ;
-        constraints.gridx = 0;
-        constraints.gridwidth = 2;
-        container.add(symbols.get('\u2190'),constraints);
-
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 2;
-        constraints.gridwidth = 1;
-        container.add(symbols.get('C'),constraints);
-
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 3;
-        constraints.gridwidth = 1;
-        container.add(symbols.get('='),constraints);
-
-    }
+    }    
 
     private void digitButtonInitialize() {
         digits = new JButton[10];

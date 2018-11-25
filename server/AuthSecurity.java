@@ -10,7 +10,6 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-import java.util.Base64;
 import java.util.Scanner;
 
 
@@ -23,10 +22,6 @@ public class AuthSecurity {
     public SecretKey getSecKey() {
         return secKey;
     }
-
-//    public Cipher getCipher() {
-//        return cipher;
-//    }
 
     AuthSecurity() {
         try {
@@ -103,8 +98,6 @@ public class AuthSecurity {
                    sb.append(line);
                }
            }
-//           System.out.println(sb.toString());
-
        } catch (IOException | InvalidKeyException e) {
            e.printStackTrace();
        }

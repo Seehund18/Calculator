@@ -1,4 +1,3 @@
-// Класс регистрационного окна
 package client.GUI;
 
 import server.AuthFile;
