@@ -9,11 +9,12 @@ public class CacheManager {
 
     CacheManager() {
         lvlOne = new LinkedList<>();
-        lvlOne.addFirst(new CacheData("2+2",4));
-        lvlOne.addFirst(new CacheData("3+3",6));
+        lvlOne.addFirst(new CacheData("2+2",4));        // Добавлено для теста
+        lvlOne.addFirst(new CacheData("3+3",6));        //
+
         lvlTwo = new ArrayList<>();
-        lvlTwo.add(new CacheData("50*2",100));
-        lvlTwo.add(new CacheData("80+9",89));
+        lvlTwo.add(new CacheData("50*2",100));          // Добавлено для теста
+        lvlTwo.add(new CacheData("80+9",89));           //
     }
 
     public double getFirstResult() {
@@ -75,7 +76,6 @@ public class CacheManager {
             aLvlTwo.show();
         }
         System.out.println("\n");
-
     }
 }
 

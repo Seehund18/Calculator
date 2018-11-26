@@ -22,10 +22,8 @@ public class StartingGUI extends JFrame {
 
     public StartingGUI(CalculatorGUI calc) {
         super("Log In");
-
-        reg = new RegistrationGUI(this,"Registration");
         this.calc = calc;
-
+        reg = new RegistrationGUI(this,"Registration");
 
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -72,7 +70,6 @@ public class StartingGUI extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
             String login = inputLogin.getText();
             String password = inputPassword.getText();
 

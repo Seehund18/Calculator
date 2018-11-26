@@ -24,16 +24,16 @@ public class CacheData {
         System.out.println(expression + "=" + result);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CacheData cache = (CacheData) o;
-        return Double.compare(cache.result, result) == 0 && this.expression.equals(cache.expression);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        CacheData cache = (CacheData) o;
+//        return Double.compare(cache.result, result) == 0 && this.expression.equals(cache.expression);
+//    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(expression, result);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(expression, result);
+//    }
 }

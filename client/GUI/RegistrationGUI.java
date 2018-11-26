@@ -11,10 +11,8 @@ public class RegistrationGUI extends JDialog {
 
     private JLabel login = new JLabel("Login:");
     private JTextField inputLogin = new JTextField("",10);
-
     private JLabel password = new JLabel("Password:");
     private JTextField inputPassword = new JTextField("",10);
-
     private JButton createAccount = new JButton("Create Account");
     private JButton cancel = new JButton("Cancel");
 
@@ -62,7 +60,6 @@ public class RegistrationGUI extends JDialog {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
             String login = inputLogin.getText();
             String password = inputPassword.getText();
 

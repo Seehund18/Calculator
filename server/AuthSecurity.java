@@ -1,16 +1,12 @@
 package server;
 
 import javax.crypto.*;
-import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
-import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.Scanner;
+
 
 
 public class AuthSecurity {
@@ -18,10 +14,6 @@ public class AuthSecurity {
     private SecretKey secKey;
     private Cipher cipher;
 
-
-    public SecretKey getSecKey() {
-        return secKey;
-    }
 
     AuthSecurity() {
         try {
@@ -36,6 +28,39 @@ public class AuthSecurity {
             e.printStackTrace();
         }
         cipherInit();
+    }
+
+    public byte[] encrypt(String data) {
+        byte[] a = null;
+
+        try  {
+            cipher.init(Cipher.ENCRYPT_MODE, secKey);
+            a = cipher.doFinal(data.getBytes());
+        } catch (InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
+            e.printStackTrace();
+        }
+        return a;
+    }
+
+    public String decrypt(File file) {
+        StringBuilder sb = new StringBuilder();
+
+        try (FileInputStream fileIn = new FileInputStream(file)) {
+            cipher.init(Cipher.DECRYPT_MODE, secKey);
+
+            try (   CipherInputStream cipherIn = new CipherInputStream(fileIn, cipher);
+                    InputStreamReader inputReader = new InputStreamReader(cipherIn);
+                    BufferedReader reader = new BufferedReader(inputReader) ) {
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line);
+                }
+            }
+        } catch (IOException | InvalidKeyException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
     }
 
     private void writeToFile() {
@@ -69,38 +94,4 @@ public class AuthSecurity {
             e.printStackTrace();
         }
     }
-
-
-   public byte[] encrypt(String data) {
-       byte[] a = null;
-
-       try  {
-           cipher.init(Cipher.ENCRYPT_MODE, secKey);
-           a = cipher.doFinal(data.getBytes());
-       } catch (InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
-           e.printStackTrace();
-       }
-       return a;
-   }
-
-   public String decrypt(File file) {
-       StringBuilder sb = new StringBuilder();
-
-       try (FileInputStream fileIn = new FileInputStream(file)) {
-           cipher.init(Cipher.DECRYPT_MODE, secKey);
-
-           try (   CipherInputStream cipherIn = new CipherInputStream(fileIn, cipher);
-                   InputStreamReader inputReader = new InputStreamReader(cipherIn);
-                   BufferedReader reader = new BufferedReader(inputReader) ) {
-
-               String line;
-               while ((line = reader.readLine()) != null) {
-                   sb.append(line);
-               }
-           }
-       } catch (IOException | InvalidKeyException e) {
-           e.printStackTrace();
-       }
-       return sb.toString();
-   }
 }

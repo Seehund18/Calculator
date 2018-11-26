@@ -1,7 +1,6 @@
 package server;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -16,9 +15,7 @@ public class AuthFile {
 
         try {
             if(authData.createNewFile()) {
-
                 String initData = "1)  login: admin\n" + "\tpassword: admin";
-
                 writeToFile(authSecurity.encrypt(initData));
                 numberOfUsers = 1;
             } else {
@@ -95,12 +92,14 @@ public class AuthFile {
     private static HashMap<String, String> readFileToHashMap() {
 
         HashMap<String,String> result = new HashMap<>();
-        String fileData = authSecurity.decrypt(authData);
-
-        fileData = fileData.replace('\u000F','\u0020');
-
         String login;
         String password;
+
+        // Метод decrypt расшифровывает всё правильно, но пару логин-пароль разделяет символом
+        // Shift In (номер Юникода 15 или u000F). Поэтому заменяю этот символ на пробел,
+        // чтобы Scanner далее мог нормально разделить строку fileData
+        String fileData = authSecurity.decrypt(authData);
+        fileData = fileData.replace('\u000F','\u0020');
 
         Scanner scan = new Scanner(fileData);
 
@@ -121,6 +120,4 @@ public class AuthFile {
         HashMap<String, String> dataFromFile = readFileToHashMap();
         return dataFromFile.containsKey(login);
     }
-
-
 }

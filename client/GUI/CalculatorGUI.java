@@ -1,6 +1,5 @@
 package client.GUI;
 
-import client.CacheData;
 import client.CacheManager;
 
 import javax.swing.*;
@@ -85,13 +84,16 @@ public class CalculatorGUI extends JFrame {
 
         setResizable(false);
         setLocationRelativeTo(null);
-    }    
+    }
 
     private void digitButtonInitialize() {
         digits = new JButton[10];
         digits[digits.length - 1] = new JButton("0");
         digits[digits.length - 1].addActionListener(new CalcActionListener(digits[digits.length - 1].getText()));
 
+//         Формирует кнопки с числами в порядке 7 8 9
+//                                              4 5 6
+//                                              1 2 3
         int[] arr = {7,1,-5};
         for (int i = 0; i < digits.length - 1 ; i++) {
             digits[i] = new JButton(Integer.toString(i + arr[i / 3]));
@@ -139,7 +141,6 @@ public class CalculatorGUI extends JFrame {
 
     private void symbolButtonInitialize() {
         symbols = new HashMap<>();
-
 
         symbols.put('/',new JButton("/"));
         symbols.put('*',new JButton("*"));
