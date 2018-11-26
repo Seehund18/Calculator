@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class AuthFile {
-    private static File authData = new File("src\\AuthenticationFile.txt");
+    private static File authData = new File("AuthenticationFile.txt");
     private static int numberOfUsers;
     private static AuthSecurity authSecurity;
 
