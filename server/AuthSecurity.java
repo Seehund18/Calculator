@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 
 
 public class AuthSecurity {
-    private File secFile = new File("src\\AuthenticationSecurity.txt");
+    private File secFile = new File("AuthenticationSecurity.txt");
     private SecretKey secKey;
     private Cipher cipher;
 
